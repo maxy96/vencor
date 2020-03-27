@@ -173,6 +173,7 @@ return [
         'password_confirmation' => 'confirmación de la contraseña',
         'phone'                 => 'teléfono',
         'price'                 => 'precio',
+        'quantity'              => 'cantidad',
         'second'                => 'segundo',
         'sex'                   => 'sexo',
         'subject'               => 'asunto',

@@ -16,6 +16,7 @@ class CreateTiposProductosTable extends Migration
         Schema::create('tipos_productos', function (Blueprint $table) {
             $table->bigIncrements('id_tipoProducto');
             $table->string('tp_descripcion', 100);
+            $table->string('slug')->unique();
         });
     }
 

@@ -21,6 +21,7 @@ class CreateProductosTable extends Migration
             $table->string('slug');
             $table->integer('stock');
             $table->decimal('precio', 8, 2);
+            $table->rememberToken();
             //$table->timestamps();
         });
     }

@@ -75,6 +75,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'u_slug' => Str::slug($data['email']),
+            'remember_token' => $data['_token'],
             'perfil_id' => 2,
             'estadoUsuario_id' => 1,
         ]);

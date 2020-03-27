@@ -1,0 +1,1 @@
+<a href="https://wa.me/5493794879222?text=Quisiera%20obtener%20mas%20informacion" class="whatsapp" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>

@@ -6,3 +6,19 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// WhatsApp
+@import 'whatsApp';
+.border-dashed{
+	 border-style:none none dashed;
+}
+
+.text-orange{
+	color:$orange;
+}
+
+@media(max-width: 400px ){
+	.txt-responsive{
+		font-size:30px;
+	}	
+}
