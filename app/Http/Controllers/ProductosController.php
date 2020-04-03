@@ -63,7 +63,7 @@ class ProductosController extends Controller
      */
     public function create(array $data, $path)
     {
-        $slug = $data['nombre']." ".$data['_token'];
+        $slug = $data['nombre']." ".Str::random(20);
         return Productos::create([
             'tipoProducto_id' => $data['tipoProducto'],
             'nombre' => $data['nombre'],

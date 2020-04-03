@@ -18,13 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('u_imagen')->nullable();
             $table->string('nombre', 50);
             $table->string('apellido', 50);
-            $table->str
             $table->string('dni', 8)->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('u_slug')->unique();
-            $table->rememberToken();
+            $table->integer('perfil_id')->unsigned();
+            $table->integer('estadoUsuario_id')->unsigned();
+            $table->rememberToken()->unique();
             $table->timestamps();
         });
     }

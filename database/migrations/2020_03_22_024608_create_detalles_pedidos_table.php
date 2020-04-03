@@ -14,8 +14,8 @@ class CreateDetallesPedidosTable extends Migration
     public function up()
     {
         Schema::create('detalles_pedidos', function (Blueprint $table) {
-            $table->bigInteger('d_orden_id')->unsigned();
-            $table->bigInteger('d_producto_id')->unsigned();
+            $table->bigInteger('orden_id')->unsigned();
+            $table->bigInteger('producto_id')->unsigned();
             $table->integer('d_cantidad');
             $table->decimal('d_precio', 8, 2);
         });

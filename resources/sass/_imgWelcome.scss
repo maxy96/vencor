@@ -1,0 +1,19 @@
+.content-logo{
+	position: absolute;
+	top: 100px;
+}
+.img-carousel{
+	filter:blur(5px);
+}
+@media(min-width: 500px){
+	.img-carousel{
+		height: 100vh;
+	}
+}
+@media(max-width: 499px){
+	.img-carousel{
+		height: 560px;
+	}
+}
+
+

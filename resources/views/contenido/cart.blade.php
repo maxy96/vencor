@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Carrito')
 @section('content')
     <div class="container my-4">
         <nav aria-label="breadcrumb">
@@ -8,6 +8,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Carrito</li>
             </ol>
         </nav>
+        {{-- dd(empty(Auth::User()->contactos()->first())) --}}
         @if(session()->has('success_msg'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session()->get('success_msg') }}
@@ -47,13 +48,13 @@
                 @foreach($cartCollection as $item)
                     <div class="row">
                         <div class="col-lg-3">
-                            <img src="{{ asset("image/".$item->attributes->image) }}" class="img-thumbnail" width="200" height="200">
+                            <img src="{{ asset("image/".$item->attributes->image) }}" class="img-thumbnail" width="200" height="200" style="height: 104.56px;">
                         </div>
                         <div class="col-lg-5">
                             <p>
-                                <b><a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></b><br>
+                                <b><a href="#">{{ $item->name }}</a></b><br>
                                 <b>Price: </b>${{ $item->price }}<br>
-                                <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }}<br>
+                                <b>Sub Total: </b>${{ \Cart::session(Auth::user()->id_user)->get($item->id)->getPriceSum() }}<br>
                      
                                 {{--                                <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }}--}}
                             </p>
@@ -66,23 +67,25 @@
                                         <input type="hidden" value="{{ $item->id}}" id="id" name="id">
                                         <input type="number" class="form-control form-control-sm" value="{{ $item->quantity }}"
                                                id="quantity" name="quantity" style="width: 70px; margin-right: 10px;">
-                                        <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-success btn-sm" style="margin-right: 25px;"><i class="fa fa-edit"></i></button>
                                     </div>
                                 </form>
                                 <form action="{{ route('cart.remove') }}" method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                    <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i class="fa fa-trash"></i></button>
+                                    <button class="btn btn-danger btn-sm" style="margin-right: 10px;"><i class="fa fa-trash"></i></button>
                                 </form>
+                                
                             </div>
                         </div>
+
                     </div>
                     <hr>
                 @endforeach
                 @if(count($cartCollection)>0)
                     <form action="{{ route('cart.clear') }}" method="POST">
                         {{ csrf_field() }}
-                        <button class="btn btn-secondary btn-md">Limpiar Carrito</button>
+                        <button class="btn btn-dark btn-md">Limpiar Carrito</button>
                     </form>
                 @endif
             </div>
@@ -93,8 +96,8 @@
                             <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }}</li>
                         </ul>
                     </div>
-                    <br><a href="{{ route('productos') }}" class="btn btn-dark">{{__('Continuar comprando')}}</a>
-                    <a href="{{route('ordenar.producto')}}" target="_blank" class="btn btn-success">{{__('Ordenar productos')}}</a>
+                    <br><a href="{{ url()->previous() }}" class="btn btn-primary">{{__('Continuar comprando')}}</a>
+                    <a href="{{route('orden.producto')}}" class="btn btn-success">{{__('Ordenar productos')}}</a>
                 </div>
             @endif
         </div>

@@ -1,6 +1,13 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+*{
+	font-family: 'Bebas Neue', cursive;
+	letter-spacing: 1px;
+}
 
+//
+@import 'itemFooter';
 // Variables
 @import 'variables';
 
@@ -9,16 +16,58 @@
 
 // WhatsApp
 @import 'whatsApp';
+
+//ajustar imagenes para la vista welcome
+@import 'imgWelcome';
+
+//cambiar los colores de los items del nav menu
+@import 'navbarItem';
+
+//botones
+@import 'btn';
+
+.bm-0{
+	bottom:0px;
+}
+
+.bg-bluelight{
+	background-color: $bluelight;
+}
+
+.bg-orange{
+	background-color: $orange;
+}
+
+#avisoCookies {
+	position: fixed;
+	bottom: 0;
+	z-index: 999;
+	width: 100%;
+	padding: 15px;
+	box-sizing: border-box;
+	color: white;
+}
+
 .border-dashed{
 	 border-style:none none dashed;
+}
+
+.text-bluelight{
+	color: $bluelight;
 }
 
 .text-orange{
 	color:$orange;
 }
-
+.txt-shadow{
+		text-shadow: 0px 4px 3px black;
+}
+.txt-responsive{
+	font-family: 'Bebas Neue', cursive;
+	word-spacing: 3px;
+}
 @media(max-width: 400px ){
 	.txt-responsive{
-		font-size:30px;
+		font-size:23px;
 	}	
 }

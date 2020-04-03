@@ -16,16 +16,16 @@ class CartController extends Controller
     }
     public function cart()  
     {
-        $cartCollection = \Cart::getContent();
+        $cartCollection = \Cart::session(\Auth::user()->id_user)->getContent();
         return view('contenido.cart')->withTitle('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);
     }
     public function add(Request $request)
     {
-        \Cart::add(array(
+        \Cart::session(\Auth::user()->id_user)->add(array(
             'id' => $request->id,
             'name' => $request->name,
             'price' => $request->price,
-            'quantity' => $request->quantity,
+            'quantity' => (int)$request->quantity,
             'attributes' => array(
             	'image' => $request->img,
                 'slug' => $request->slug,
@@ -37,13 +37,13 @@ class CartController extends Controller
 
     public function remove(Request $request)
     {
-        \Cart::remove($request->id);
+        \Cart::session(\Auth::user()->id_user)->remove($request->id);
         return redirect()->route('cart.index')->with('success_msg', '¡Producto removido!');
     }
 
     public function update(Request $request){
     	$this->validator($request->all())->validate();
-        \Cart::update($request->id,
+        \Cart::session(\Auth::user()->id_user)->update($request->id,
             array(
                 'quantity' => array(
                     'relative' => false,
@@ -54,7 +54,7 @@ class CartController extends Controller
     }
 
     public function clear(){
-        \Cart::clear();
+       \Cart::session(\Auth::user()->id_user)->clear();
         return redirect()->route('cart.index')->with('success_msg', '¡El carrito está despejado!');
     }
     protected function validator(array $data)

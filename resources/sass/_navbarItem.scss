@@ -1,0 +1,21 @@
+.navbar-white .navbar-nav .nav-link {
+	color: white;
+	text-shadow: 0px 2px 7px darkblue;
+	border-bottom:3px solid transparent;
+	font-size: 20px;
+}
+
+.navbar-white .navbar-nav .nav-link:hover {
+	border-bottom:3px solid white;
+}
+
+.navbar-orange .navbar-nav .nav-link {
+	color: $orange;
+	text-shadow: none;
+	border-bottom:3px solid transparent;
+	font-size: 20px;
+}
+
+.navbar-orange .navbar-nav .nav-link:hover {
+	border-bottom:3px solid $bluelight;
+}

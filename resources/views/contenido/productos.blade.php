@@ -4,9 +4,9 @@
 	<div class="container my-4">
 		<div class="row">
 			@foreach($productos as $producto)
-			<article class="col-md-3">
+			<article class="col-md-3 my-2 mx-2 ">
 				<div class="card shadow" >
-			  		<img class="card-img-top" src="{{ asset("image/$producto->p_imagen") }}" alt="Card image cap" >
+			  		<img class="card-img-top" src="{{ asset("image/$producto->p_imagen") }}" alt="Card image cap" style="height: 160px;">
 			  		<h5 class="card-header">{{$producto->nombre}}</h5>
 			 	 	<div class="card-body">
 			   			 <p class="card-text">Marca: {{$producto->marca}}</p>

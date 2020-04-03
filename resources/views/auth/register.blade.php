@@ -4,20 +4,20 @@
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Formulario de registro') }}</div>
+            <div class="card shadow">
+                <div class="card-header bg-orange text-white text-center">{{ __('Formulario de registro') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         
                         <div class="form-group row">
-                            <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('DNI') }}</label>
+                            <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Telefono') }}</label>
 
                             <div class="col-md-6">
-                                <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autofocus>
+                                <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required autofocus>
 
-                                @error('dni')
+                                @error('telefono')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

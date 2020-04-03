@@ -37054,6 +37054,18 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+function checkCookieLaw() {
+  if (window.localStorage.getItem('cookieLawKeyMiWeb')) {
+    $('#avisoCookies').hide();
+  }
+}
+
+checkCookieLaw();
+$('#aceptarCookies').on("click", function () {
+  window.localStorage.setItem('cookieLawKeyMiWeb', true);
+  $('#avisoCookies').hide();
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

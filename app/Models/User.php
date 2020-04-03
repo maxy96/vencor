@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -45,4 +45,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function contactos()
+    {
+        return $this->hasMany(Contactos::class, 'user_id', 'id_user');
+    }
+    public function ordenPedido(){
+        return $this->hasMany(OrdenPedidos::class, 'cliente_id', 'id_user');
+    }
 }

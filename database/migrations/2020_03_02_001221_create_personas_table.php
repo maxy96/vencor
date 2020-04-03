@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Domicilio extends Migration
+class CreatePersonasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class Domicilio extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('personas', function (Blueprint $table) {
+            $table->bigIntege('id_user')->unsigned();
+            $table->string();
+        });
     }
 
     /**
@@ -23,6 +26,6 @@ class Domicilio extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('personas');
     }
 }

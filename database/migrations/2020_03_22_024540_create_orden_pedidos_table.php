@@ -13,9 +13,17 @@ class CreateOrdenPedidosTable extends Migration
      */
     public function up()
     {
+        Schema::create('tipo_pedidos', function (Blueprint $table) {
+            $table->increments('id_tipoPedido');
+            $table->string('descripcion', 50);
+        });
+
         Schema::create('orden_pedidos', function (Blueprint $table) {
             $table->bigIncrements('id_ordenPedido');
-            $table->dateTime('o_fechaPedido');
+            $table->dateTime('fechaPedido');
+            $table->bigInteger('cliente_id')->unsigned();
+            $table->string('cod_ordenPedido', 50)->unique();
+            $table->integer('tipoPedido_id')->unsigned();
         });
     }
 
@@ -27,5 +35,6 @@ class CreateOrdenPedidosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('orden_pedidos');
+        Schema::dropIfExists('tipo_pedidos');
     }
 }
