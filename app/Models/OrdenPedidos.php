@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrdenPedidos extends Model
 {
     protected $table = "orden_pedidos";
-	public $timestamps = false;
+	  public $timestamps = false;
     protected $primaryKey = "id_ordenPedido";
     protected $fillable = [
     						'fechaPedido',
@@ -23,4 +23,11 @@ class OrdenPedidos extends Model
    	{
    		return $this->belongsTo(User::class, 'cliente_id', 'id_user');
    	}
+    public function totalPedidos()
+    {
+     return $this->detallesPedidos()->count();
+    }
+    public function totalPrecio(){
+      return $this->detallesPedidos()->sum('d_precio');
+    }
 }

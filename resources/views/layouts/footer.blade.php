@@ -1,4 +1,4 @@
-<footer class="bg-orange text-white border-top bm-0 py-4">
+<footer class="bg-orange text-white border-top bm-0 mt-4 pb-2">
 		<div class="justify-content-center my-4">
 			<ul class="nav flex-column border-bottom">
 				<li class="nav-item d-flex justify-content-center my-2">
@@ -16,5 +16,5 @@
 			</ul>
 		</div>
 	</div>
-	<h4 class="text-center">Copyright © vencor</h4>
+	<h4 class="text-center ">Copyright © vencor</h4>
 </footer>

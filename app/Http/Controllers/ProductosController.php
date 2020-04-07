@@ -17,9 +17,8 @@ class ProductosController extends Controller
      */
     public function index()
     {
-       $productos = Productos::select()->get();
-       ($productos);
-       return view('contenido.productos', compact('productos'));
+       $productos = Productos::get();
+       return $productos;
     }
 
     public function formNuevoProducto()//formulario para agregar nuevo producto
@@ -84,10 +83,6 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

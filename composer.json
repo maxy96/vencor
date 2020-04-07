@@ -17,7 +17,8 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "mercadopago/dx-php": "^1.8",
+        "mercadopago/dx-php": "dev-master",
+        "php-parallel-lint/php-console-color": "^0.2.0",
         "rodggall/mercadopago": "@dev",
         "santigraviano/laravel-mercadopago": "^1.0"
     },

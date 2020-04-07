@@ -3,11 +3,17 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@index');
+Route::get('/denegado', function (){
+	return view('contenido.accessDenied');
+})->name('acceso.denegado');
 //PRODUCTOS
 Route::get('/productos', 'ProductosController@index')->name('productos');
 Route::get('/nuevo-producto', 'ProductosController@formNuevoProducto')->name('formulario.nuevoProducto');
 Route::post('nuevo-producto', 'ProductosController@store')->name('guardar.producto');
 
+//ADMIN
+Route::get('/admin/gestionar-productos', 'AdminController@gestionarProductos')->name('gestionar.productos');
+Route::get('/admin/gestionar-pedidos', 'AdminController@gestionarPedidos')->name('gestionar.pedidos');
 
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
@@ -19,6 +25,7 @@ Auth::routes(['verify' => true]);
 
 //TIPO DE PRODUCTO
 Route::post('nuevo-tipo-producto', 'TiposProductosController@store')->name('nuevo.tipo.producto');
+Route::get('/producto/{slug}', 'TiposProductosController@show')->name('tipo.producto');
 
 //CONTACTO
 Route::get('/nuevo-contacto', 'ContactoController@index')->name('form.contacto');// - Mostrar formulario contacto.
@@ -38,6 +45,8 @@ Route::get('/orden/factura/{cod_orden}', 'OrdenController@factura')->name('orden
 Route::get('/orden/compra', 'OrdenController@compraEfectivo')->name('compra.efectivo');
 Route::get('/orden/compra-finalizada', 'OrdenController@compraFinalizada')->name('compra.finalizada');
 
+//PEDIDOS
+Route::get('/mis-pedidos', 'PedidosController@index')->name('mis.pedidos')->middleware('auth');
 
 
 //Route::get('/ad', 'MercadoPago@setupPaymentAndGetRedirectURL');

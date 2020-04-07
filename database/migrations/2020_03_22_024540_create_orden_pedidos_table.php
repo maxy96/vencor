@@ -24,6 +24,7 @@ class CreateOrdenPedidosTable extends Migration
             $table->bigInteger('cliente_id')->unsigned();
             $table->string('cod_ordenPedido', 50)->unique();
             $table->integer('tipoPedido_id')->unsigned();
+            $table->rememberToken()->unique();
         });
     }
 

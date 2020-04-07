@@ -54,7 +54,15 @@ class AddForeignKey extends Migration
         Schema::table('contactos', function (Blueprint $table) {
             //$table->bigInteger('d_orden_id')->unsigned();
             $table->foreign('user_id')->references('id_user')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('tipoVivienda_id')->references('id_tipoVivienda')->on('tipos_viviendas')->onDelete('cascade')->onUpdate('cascade');
+            $table->primary('user_id');
         });  
+
+        //TABLA PERSONAS
+        Schema::table('personas', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id_user')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->primary('user_id');
+        }); 
     }
 
     /**
@@ -64,8 +72,12 @@ class AddForeignKey extends Migration
      */
     public function down()
     {
+        Schema::table('personas', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::table('contactos', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['tipoVivienda_id']);
         });
         Schema::table('detalles_pedidos', function (Blueprint $table) {
             $table->dropForeign(['d_producto_id']);

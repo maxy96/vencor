@@ -25,6 +25,7 @@ class RouteServiceProvider extends ServiceProvider
     //public const VERIFY = '/email/verify';
     public const NUEVOCONTACTO = '/nuevo-contacto';
     public const CARTCONTENT = '/cart';
+    public const ACCESSDENIED = '/denegado';
 
     /**
      * Define your route model bindings, pattern filters, etc.

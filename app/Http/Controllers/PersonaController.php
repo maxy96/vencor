@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use App\Models\Contactos;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str as Str;
 
-class ContactoController extends Controller
+class PersonaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +13,7 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        return view('contenido.agregarContacto');
+        //
     }
 
     /**
@@ -25,15 +21,9 @@ class ContactoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(array $data, $user)
+    public function create()
     {
-        return Contactos::create([
-            'telefono' => $data['telefono'],
-            'domicilio' => strtolower($data['domicilio'])." ".$data['altura'],
-            'casa_descripcion' => $data['casa_descripcion'],
-            'user_id' => $user,
-            'remember_token' => $data['_token']
-        ]);
+        //
     }
 
     /**
@@ -44,19 +34,7 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
-        $this->create($request->all(), $request->user()->id_user);
-        return redirect()->route('cart.index')->with('success_msg', 'Contacto registrado, puede ordenar su pedido');
-    }
-
-    public function validator(array $data)
-    {
-        return Validator::make($data, [
-            'domicilio' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
-            'altura' => ['required', 'regex:/[0-9]{2,4}/'],
-            'casa_descripcion' => ['required']
-        ]);
-    }
+        'dni' => ['required', 'string', 'unique:users', 'numeric', 'regex: /^[0-9]{8}/'],    }
 
     /**
      * Display the specified resource.

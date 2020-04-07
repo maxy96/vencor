@@ -25,7 +25,6 @@ class DetallesPedidos extends Model
 	}
 	public function ordenPedidos()
 	{
-	   return $this->belongsTo(OrdenPedidos::class, 'id_orden', 'orden_id');
+	   return $this->belongsTo(OrdenPedidos::class, 'id_ordenPedido', 'orden_id');
 	}
-
 }

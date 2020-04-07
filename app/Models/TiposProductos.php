@@ -10,4 +10,9 @@ class TiposProductos extends Model
     protected $table = 'tipos_productos';
     protected $primaryKey = 'id_tipoProducto';
     protected $fillable = ['tp_descripcion', 'slug'];
+
+    public function contactos()
+    {
+        return $this->hasMany(Productos::class, 'tipoProducto_id', 'id_tipoProducto');
+    }
 }

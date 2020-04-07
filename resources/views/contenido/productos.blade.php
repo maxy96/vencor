@@ -13,8 +13,8 @@
 			   			 <p class="card-text">Stock: {{$producto->stock}}</p>
 			 		</div>
 			 		<div class="card-footer ">
-				    	<span class="card-link">{{$producto->precio}}</span>
-	    				<a href="#" class="card-link">Ver mas</a>
+				    	<span class="card-link">${{$producto->precio}}</span>
+	    				
 	    				@auth
 		    				<form action="{{ route('cart.store') }}" method="POST">
 	               			 {{ csrf_field() }}

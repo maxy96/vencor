@@ -59,9 +59,13 @@ class TiposProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+       $productos = TiposProductos::where('tipos_productos.slug', '=',$slug)
+                    ->join('productos', 'tipoProducto_id', '=', 'id_tipoProducto')
+                    ->select('productos.*')
+                    ->get();
+       return view('contenido.productos', compact('productos'));
     }
 
     /**

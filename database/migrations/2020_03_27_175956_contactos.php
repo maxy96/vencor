@@ -14,11 +14,12 @@ class Contactos extends Migration
     public function up()
     {
         Schema::create('contactos', function (Blueprint $table) {
-            $table->bigIncrements('id_contacto');
-            $table->string('telefono', 12)->unique();
+            //$table->bigIncrements('id_contacto');
+            //$table->string('telefono', 12)->unique();
+            $table->bigInteger('user_id')->unsigned();
+            $table->integer('tipoVivienda_id')->unsigned();
             $table->string('domicilio', 60);
             $table->string('casa_descripcion');
-            $table->bigInteger('user_id')->unsigned();
             $table->rememberToken()->unique();
         });
     }
