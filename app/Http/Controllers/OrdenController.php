@@ -8,12 +8,15 @@ use App\Models\OrdenPedidos;
 use App\Models\DetallesPedidos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use MP;
 
 use Illuminate\Support\Str as Str;
 
 class OrdenController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
 	public function index(){
 
 		foreach (\Cart::session(\Auth::user()->id_user)->getContent() as $cart){
@@ -29,12 +32,12 @@ class OrdenController extends Controller
         		  	 ]);  						
 		}
 		
-		$preferenceData = ['items' => $items];
+		//$preferenceData = ['items' => $items];
 		//dd($preferenceData);
-		$preference = MP::create_preference($preferenceData);
+		//$preference = MP::create_preference($preferenceData);
     	//$preference->back_urls = ['success' => 'hola'];
-    	$preference['response']['back_urls'] = [ 'failure' => route('cart.index')];
-   		$a = $preference['response']['id'];
+    	//$preference['response']['back_urls'] = [ 'failure' => route('cart.index')];
+   		//$a = $preference['response']['id'];
 		return view('contenido.orden', compact('a'));
 	}
 	public function factura($cod_orden)

@@ -10,15 +10,12 @@ class Contactos extends Model
 	protected $table = 'contactos';
 	protected $primaryKey = 'id_contacto';
   protected $fillable = [
-    						'telefono', 
+    						'tipoVivienda_id', 
     						'domicilio', 
     						'casa_descripcion',
     						'user_id',
                 'remember_token'
     					];
 
-   	public function user()
-   	{
-   		return $this->belongsTo(User::class, 'id_user', 'user_id');
-   	}
+   	
 }

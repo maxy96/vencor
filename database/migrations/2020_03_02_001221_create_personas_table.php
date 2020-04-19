@@ -15,9 +15,9 @@ class CreatePersonasTable extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->bigInteger('user_id')->unsigned();
-            $table->string('nombre', 50)->nullable()->default("");
-            $table->string('apellido', 50)->nullable()->default("");
-            $table->string('dni', 8)->nullable()->default("");
+            $table->string('nombre', 50);
+            $table->string('apellido', 50);
+            $table->string('dni', 8)->unique();
         });
     }
 

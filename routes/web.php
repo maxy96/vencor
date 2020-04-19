@@ -8,13 +8,15 @@ Route::get('/denegado', function (){
 })->name('acceso.denegado');
 //PRODUCTOS
 Route::get('/productos', 'ProductosController@index')->name('productos');
-Route::get('/nuevo-producto', 'ProductosController@formNuevoProducto')->name('formulario.nuevoProducto');
+Route::get('/nuevo-producto', 'ProductosController@formNuevoProducto')->name('formulario.nuevoProducto')->middleware('auth', 'admin');
 Route::post('nuevo-producto', 'ProductosController@store')->name('guardar.producto');
 
 //ADMIN
+Route::get('/admin/gestionar-usuarios', 'AdminController@gestionarUsuarios')->name('gestionar.usuarios');
 Route::get('/admin/gestionar-productos', 'AdminController@gestionarProductos')->name('gestionar.productos');
 Route::get('/admin/gestionar-pedidos', 'AdminController@gestionarPedidos')->name('gestionar.pedidos');
 
+//VERIFY EMAIL
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
@@ -48,7 +50,9 @@ Route::get('/orden/compra-finalizada', 'OrdenController@compraFinalizada')->name
 //PEDIDOS
 Route::get('/mis-pedidos', 'PedidosController@index')->name('mis.pedidos')->middleware('auth');
 
-
+Route::get('/promo', function(){
+	return view('admin.agregarPromocion');
+})->name('promo');
 //Route::get('/ad', 'MercadoPago@setupPaymentAndGetRedirectURL');
 //Route::get('/merca', 'MercadoPagoController@getCreatePreference');
 

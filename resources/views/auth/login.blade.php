@@ -1,11 +1,11 @@
 @extends('layouts.app')
-
+@section('title', 'Iniciar sesion')
 @section('content')
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Iniciar Sesion') }}</div>
+                <div class="card-header bg-orange text-white text-center">{{ __('Iniciar Sesion') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

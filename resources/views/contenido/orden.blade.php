@@ -4,42 +4,51 @@
 
 	<div class="container  my-4">
 		<div class="row justify-content-center">
-			<div class="col-md-10 bg-white shadow py-4 px-4">
-				{{--dd(Auth::user()->contactos)--}}		
-				<h1 class="text-center text-orange"><strong>Seccion de pago</strong></h1>		
-				<div class="lead text-primary">
-				@foreach(Auth::user()->contactos as $contacto)
-					<div class="custom-control custom-radio my-3 mx-4">
-  						<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="">
-  						<label class="custom-control-label" for="customRadio1">
-  							{{ $contacto->domicilio.' - ' }}
-							{{ $contacto->telefono.' - ' }}
-							{{ $contacto->casa_descripcion }}
-  						</label>
+			<div class="col-md-8">
+				<div class="card shadow">
+					<div class="card-header bg-orange text-white text-center">{{ __('Seccion de pago') }}</div>
+					<div class="card-body ">
+						<div class="row ">
+							<div class="col-6">
+								Nombre: {{Auth::User()->personas()->first()->nombre." ".Auth::User()->personas()->first()->apellido }}
+							</div>
+							<div class="col-6">
+								DNI: {{Auth::User()->personas()->first()->dni}}
+							</div>
+						</div>
 					</div>
-				@endforeach
+					<div class="card-footer bg-white">
+						<form action="#" method="POST" id="paymentForm">
+							@csrf
+							<div class="row mt-3">
+								<div class="col">
+									<label>Selecciona el metodo de pago</label>
+									<div class="form-group" id="toggler">
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+											<label class="btn btn-outline-success rounded m-2 p-1" data-target="#efectivoCollapse" data-toggle="collapse">
+												<input type="radio" name="payment_platform" value="efectivo" required="">
+												<img class=" img-thumbnail" src="{{asset('image/pagos/efectivo.png')}}" alt="">
+											</label>
+											<label class="btn btn-outline-primary rounded m-2 p-1" data-target="#mercadopagoCollapse" data-toggle="collapse">
+												<input type="radio" name="payment_platform" value="mercadoPago" required>
+												<img class="img-thumbnail" src="{{asset('image/pagos/mercadopago.jpg')}}" alt="">
+											</label>
+										</div>
+										<div id="efectivoCollapse" class="collapse" data-parent="#toggler">
+											<small class="text-success">Al elegir este metodo, usted pagara en efectivo al momento de recibir su pedido, y se le generará un codigo con el cual este sera identificado. </small>
+										</div>
+										<div id="mercadopagoCollapse" class="collapse" data-parent="#toggler">
+											<small>Cara</small>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="text-center mt-3">
+								<button type="submit" id="payButton" class="btn btn-primary">Pagar</button>
+							</div>
+						</form>
+					</div>
 				</div>
-				<div class="row justify-content-center">
-					<div class="col-md-5 card border-success text-success text-center mx-1">
-				  		<div class="card-body">
-						    <h3 class="card-title"><strong>Efectivo</strong></h3>
-						    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						    <a href="{{route('compra.efectivo')}}" class="btn btn-success">Comprar</a>
-					 	</div>
-					</div>
-					<div class="col-md-5 card border-info text-info text-center mx-1">
-				  		<div class="card-body">
-						    <h3 class="card-title"><strong>Mercado Pago</strong></h3>
-						    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						    <form action="/procesar-pago" method="POST">
-			                      <script
-			                       src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-			                       data-preference-id="{{ $a ?? ''}}">
-			                      </script>
-							</form>
-					 	</div>
-					</div>
-				</div>				
 			</div>
 		</div>
 	</div>

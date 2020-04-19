@@ -1,3 +1,4 @@
+import axios from 'axios';
 var producto = new Vue({
   el: '#app',
   data: {
@@ -8,10 +9,10 @@ var producto = new Vue({
   },
   methods: {
   		getProductos: function(){
-  			var urlProductos = 'productos';
+  			var urlProductos = 'https://vencor.test/productos';
   			axios.get(urlProductos).then(response =>{
-          console.log(response.data);
-  				this.productos = response.data
+  				this.productos = response.data;
+          console.log(this.productos);
   			})
   		}
   }

@@ -10,15 +10,13 @@ use Illuminate\Support\Str as Str;
 
 class ProductosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function product(){
+        return Productos::all();
+    }
     public function index()
     {
        $productos = Productos::get();
-       return $productos;
+       return view('contenido.productos', compact('productos'));
     }
 
     public function formNuevoProducto()//formulario para agregar nuevo producto

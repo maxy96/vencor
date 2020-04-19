@@ -2,13 +2,7 @@
 @section('title', 'Carrito')
 @section('content')
     <div class="container my-4">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('productos')}}">Productos</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Carrito</li>
-            </ol>
-        </nav>
-        {{-- dd(empty(Auth::User()->contactos()->first())) --}}
+        <h1 class="text-center">Carrito de compras</h1>
         @if(session()->has('success_msg'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session()->get('success_msg') }}

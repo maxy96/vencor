@@ -3,7 +3,7 @@
 
 @section('content')
 	<div id="app" class="container my-4">
-		@{{data}}
+		@{{productos}}
 		<h1 class="text-center my-4">Gestionar Productos</h1>
 		<div class="my-4">
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formulario" data-whatever="">Agregar Productos</button>

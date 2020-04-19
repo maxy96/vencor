@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('title', 'vencor')
-@section('script')
-	<script src="{{ asset('js/scroll.js') }}" defer></script>
-@endsection
+
 @section('content')
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 	  <div class="carousel-inner">
@@ -18,18 +16,22 @@
 	  </div>
 	</div>
 
-	<div class="container-fluid content-logo">
-		<div class="row justify-content-center">
-			<div class="col-md-8">
-				<img class="img-fluid" src="{{asset('vencor-presentacion.png')}}" style="width: 100%;" alt="vencor">
-				<h1 class="text-bluelight text-center txt-shadow txt-responsive">
-					<strong>ABASTEZCA SU HOGAR SIN MOVERSE DE SU CASA</strong>
-				</h1>
-				<h1 class="text-bluelight text-center txt-shadow txt-responsive">
-					<strong>NOSOTROS VAMOS A SU DOMICILIO</strong>
-				</h1>
+	<div class="content-logo">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<img class="img-fluid" src="{{asset('vencor-presentacion.png')}}" style="width: 100%;" alt="vencor">
+				</div>
 			</div>
 		</div>
+		<div class="bg-whitetransparent">
+			<h1 class="text-dark text-center txt-responsive">
+				<strong>ABASTEZCA SU HOGAR SIN MOVERSE DE SU CASA</strong>
+			</h1>
+			<h1 class="text-dark text-center txt-responsive">
+				<strong>NOSOTROS VAMOS A SU DOMICILIO</strong>
+			</h1>
+		</div>	
 	</div>	
 	
 		<div class="container my-4">
@@ -94,4 +96,7 @@
 		</div>
 	</div>
 
+@endsection
+@section('script')
+	<script src="{{ asset('js/scroll.js') }}" defer></script>
 @endsection

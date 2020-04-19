@@ -14,8 +14,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// WhatsApp
+// botones flotantes
 @import 'whatsApp';
+@import 'notification';
 
 //ajustar imagenes para la vista welcome
 @import 'imgWelcome';
@@ -26,6 +27,8 @@
 //botones
 @import 'btn';
 
+@import 'forms';
+
 .bm-0{
 	bottom:0px;
 }
@@ -33,7 +36,9 @@
 .bg-bluelight{
 	background-color: $bluelight;
 }
-
+.bg-whitetransparent{
+	background-color: #ffffff9e;
+}
 .bg-orange{
 	background-color: $orange;
 }

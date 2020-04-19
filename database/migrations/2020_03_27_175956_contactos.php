@@ -19,7 +19,7 @@ class Contactos extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->integer('tipoVivienda_id')->unsigned();
             $table->string('domicilio', 60);
-            $table->string('casa_descripcion');
+            $table->mediumText('casa_descripcion');
             $table->rememberToken()->unique();
         });
     }

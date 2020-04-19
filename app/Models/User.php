@@ -52,9 +52,16 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function contactos()
     {
-        return $this->hasMany(Contactos::class, 'user_id', 'id_user');
+        return $this->hasOne(Contactos::class, 'user_id', 'id_user');
+    }
+    public function personas()
+    {
+        return $this->hasOne(Personas::class, 'user_id', 'id_user');
     }
     public function ordenPedido(){
         return $this->hasMany(OrdenPedidos::class, 'cliente_id', 'id_user');
     }
-}
+    public function perfil()
+    {
+        return $this->belongsTo(Perfiles::class, 'perfil_id', 'id_perfil');    }
+    }

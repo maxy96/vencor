@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md  @if(Request::segment(1)<>null) navbar-orange sticky-top bg-white shadow-sm @else navbar-white fixed-top @endif" style="transition: 0.5s ease;">
+<nav class="navbar navbar-expand-md navbar-orange @if(Request::segment(1)<>null) sticky-top bg-white shadow-sm @else fixed-top @endif" style="transition: 0.5s ease;">
      <div id="menu" class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{asset('logo-vencor.png')}}" style="height: 2.5rem;" alt="vencor">
@@ -12,6 +12,9 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item mx-1 my-1">
                             <a class="nav-link" href="{{route('productos')}}">{{ __('Productos')}} </a>
+                        </li>
+                        <li class="nav-item mx-1 my-1">
+                            <a class="nav-link" href="{{route('promo')}}">{{ __('Promocion')}} </a>
                         </li>
                         <li class="nav-item dropdown mx-1 my-1">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -39,12 +42,15 @@
                         @else
                             
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link-o mx-1 dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <i class="fa fa-user-circle-o" style="font-size: 21px;"></i> <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                   <!--dropdown user -->     
+                                   <!--dropdown user -->
+                                   <h6 class="dropdown-header">{{Auth::User()->perfil()->first()->descripcion}}</h6>
+                                   <div class="dropdown-divider"></div>
+                                   
                                    @if(Auth::user()->perfil_id == 1)
                                         @include('nav.dropAdmin')
                                    @else
@@ -63,7 +69,7 @@
                             </li>
                             @if(Auth::user()->perfil_id == 1)
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a id="navbarDropdown" class="nav-link-o mx-1 dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="badge badge-pill badge-dark">
                                         <i class="fa fa-bell"></i> {{App\Models\OrdenPedidos::where('tipoPedido_id', '=', 1)->count()}}
                                     </span>
@@ -77,7 +83,7 @@
                             @endif
 
                             <li class="nav-item dropdown">
-                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                 <a id="navbarDropdown" class="nav-link-o mx-1 dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="color: black;">
                                     <span class="badge badge-pill badge-dark">
                                         <i class="fa fa-shopping-cart"></i> {{ \Cart::session(\Auth::user()->id_user)->getTotalQuantity()}}
                                     </span>

@@ -12,67 +12,118 @@
 	                </button>
 	            </div>
 	       	 	@endif
-				<div class="card shadow-sm">
+				<div class="card shadow">
 					<div class="card-header bg-orange text-white">{{__('Agregar datos de Contacto')}}</div>
 					<div class="card-body">
 						<form method="POST" action="{{ route('guardar.contacto') }}">
 							@csrf
-	                        <div class="form-group row">
-	                            <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Telefono') }}</label>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group row">
+	                            		<label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
+			                            <div class="col-md-8">
+			                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required autofocus>
 
-	                            <div class="col-md-6">
-	                                <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required autofocus placeholder="3794 o 3795">
+			                                @error('nombre')
+			                                    <span class="invalid-feedback" role="alert">
+			                                        <strong>{{ $message }}</strong>
+			                                    </span>
+			                                @enderror
+			                            </div>
+	                        		</div> 
+								</div>
+								<div class="col-md-6">
+									<div class="form-group row">
+	                            		<label for="apellido" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
+	                            		<div class="col-md-8">
+	                               			 <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror" name="apellido" value="{{ old('apellido') }}" required autofocus>
+			                                @error('apellido')
+			                                    <span class="invalid-feedback" role="alert">
+			                                        <strong>{{ $message }}</strong>
+			                                    </span>
+			                                @enderror
+	                            		</div>
+	                        		</div> 
+								</div>
+								<div class="col-md-6">
+									 <div class="form-group row">
+			                            <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('DNI') }}</label>
 
-	                                @error('telefono')
-	                                    <span class="invalid-feedback" role="alert">
-	                                        <strong>{{ $message }}</strong>
-	                                    </span>
-	                                @enderror
-	                            </div>
-	                        </div> 
+			                            <div class="col-md-8">
+			                                <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autofocus>
 
-	                        <div class="form-group row">
-	                            <label for="domicilio" class="col-md-4 col-form-label text-md-right">{{ __('Domicilio') }}</label>
+			                                @error('dni')
+			                                    <span class="invalid-feedback" role="alert">
+			                                        <strong>{{ $message }}</strong>
+			                                    </span>
+			                                @enderror
+			                            </div>
+	                       			 </div> 
+								</div>
+								<div class="col-md-6">
+									 <div class="form-group row">
+			                            <label for="tipohogar" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de hogar') }}</label>
 
-	                            <div class="col-md-6">
-	                                <input id="domicilio" type="text" class="form-control @error('domicilio') is-invalid @enderror" name="domicilio" value="{{ old('domicilio') }}" required autofocus>
+			                            <div class="col-md-8">
+			                                <select class="form-control" name="tipohogar" required>
+			                                	@foreach($thogar as $hogar)
+			                                    	<option value="{{$hogar->id_tipoVivienda}}">{{$hogar->descripcion}}</option>
+			                                    @endforeach
+			                                </select>
 
-	                                @error('domicilio')
-	                                    <span class="invalid-feedback" role="alert">
-	                                        <strong>{{ $message }}</strong>
-	                                    </span>
-	                                @enderror
-	                            </div>
-	                        </div> 
+			                                @error('tipohogar')
+			                                    <span class="invalid-feedback" role="alert">
+			                                        <strong>{{ $message }}</strong>
+			                                    </span>
+			                                @enderror
+			                            </div>
+	                       			 </div> 
+								</div>
+								<div class="col-md-6">
+									 <div class="form-group row">
+			                            <label for="domicilio" class="col-md-4 col-form-label text-md-right">{{ __('Domicilio') }}</label>
 
-	                        <div class="form-group row">
-	                            <label for="altura" class="col-md-4 col-form-label text-md-right">{{ __('Altura') }}</label>
+			                            <div class="col-md-8">
+			                                <input id="domicilio" type="text" class="form-control @error('domicilio') is-invalid @enderror" name="domicilio" value="{{ old('domicilio') }}" required autofocus>
 
-	                            <div class="col-md-6">
-	                                <input id="altura" type="text" class="form-control @error('altura') is-invalid @enderror" name="altura" value="{{ old('altura') }}" required autofocus>
+			                                @error('domicilio')
+			                                    <span class="invalid-feedback" role="alert">
+			                                        <strong>{{ $message }}</strong>
+			                                    </span>
+			                                @enderror
+			                            </div>
+	                       			 </div> 
+								</div>
+								<div class="col-md-6">
+									<div class="form-group row">
+			                            <label for="altura" class="col-md-4 col-form-label text-md-right">{{ __('Altura') }}</label>
 
-	                                @error('altura')
-	                                    <span class="invalid-feedback" role="alert">
-	                                        <strong>{{ $message }}</strong>
-	                                    </span>
-	                                @enderror
-	                            </div>
-	                        </div>  
+			                            <div class="col-md-8">
+			                                <input id="altura" type="text" class="form-control @error('altura') is-invalid @enderror" name="altura" value="{{ old('altura') }}" required placeholder="Ej: 01, 22, 333, 4444">
 
-	                        <div class="form-group row">
-	                            <label for="casa_descripcion" class="col-md-4 col-form-label text-md-right">{{ __('Breve descripcion de la casa') }}</label>
+			                                @error('altura')
+			                                    <span class="invalid-feedback" role="alert">
+			                                        <strong>{{ $message }}</strong>
+			                                    </span>
+			                                @enderror
+			                            </div>
+	                       		 	</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group row">
+	                            		<label for="casa_descripcion" class="col-md-2 col-form-label text-md-right">{{ __('Breve descripcion de la casa') }}</label>
+	                            		<div class="col-md-10">
+			                                <textarea id="casa_descripcion" type="text" class="form-control @error('casa_descripcion') is-invalid @enderror" name="casa_descripcion" value="{{ old('casa_descripcion') }}" required autofocus placeholder="Color de casa o departamento, etc." style="resize: none;" rows="6"></textarea>
 
-	                            <div class="col-md-6">
-	                                <input id="casa_descripcion" type="text" class="form-control @error('casa_descripcion') is-invalid @enderror" name="casa_descripcion" value="{{ old('casa_descripcion') }}" required autofocus placeholder="Color de casa o departamento, etc.">
-
-	                                @error('casa_descripcion')
-	                                    <span class="invalid-feedback" role="alert">
-	                                        <strong>{{ $message }}</strong>
-	                                    </span>
-	                                @enderror
-	                            </div>
-	                        </div> 
-
+			                                @error('casa_descripcion')
+			                                    <span class="invalid-feedback" role="alert">
+			                                        <strong>{{ $message }}</strong>
+			                                    </span>
+			                                @enderror
+	                            		</div>
+	                        		</div>
+								</div>
+							</div>
 	                        <div class="form-group row mb-0">
 	                            <div class="col-md-6 offset-md-4">
 	                                <button type="submit" class="btn btn-primary">

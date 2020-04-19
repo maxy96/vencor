@@ -1,0 +1,22 @@
+.notification {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  bottom: 70px;
+  right: 10px;
+  background-color: $bluelight;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 25px;
+  z-index: 100;
+}
+
+.notification:hover{
+  color: #f8fafc;
+  background-color: $blue;
+}
+
+.notification-icon {
+  margin-top:8px;
+}
