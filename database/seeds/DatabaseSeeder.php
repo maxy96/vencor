@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EstadosProductosSeeder::class);
         $this->call(EstadosUsuariosSeeder::class);
         $this->call(PerfilesSeeder::class);
-        $this->call(TiposPedidosSeeder::class);
+        $this->call(TiposPagosSeeder::class);
         $this->call(TiposViviendasSeeder::class);
     }
 }

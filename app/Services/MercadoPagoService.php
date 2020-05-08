@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Http\Request;
-use App\Traits\ConsumesExternalServices;
+//use App\Traits\ConsumesExternalServices;
 //use App\Services\CurrencyConversionService; Convertidor de monedas
 
 class MercadoPagoService
@@ -18,16 +18,12 @@ class MercadoPagoService
 
     protected $baseCurrency;
 
-    protected $converter;
-
-    public function __construct(CurrencyConversionService $converter)
+    public function __construct()
     {
         $this->baseUri = config('services.mercadopago.base_uri');
         $this->key = config('services.mercadopago.key');
         $this->secret = config('services.mercadopago.secret');
         $this->baseCurrency = config('services.mercadopago.base_currency');
-
-        $this->converter = $converter;
     }
 
     public function resolveAuthorization(&$queryParams, &$formParams, &$headers)
@@ -55,10 +51,10 @@ class MercadoPagoService
 
         $payment = $this->createPayment(
             $request->value,
-            $request->currency,
+            //$request->currency,
             $request->card_network,
             $request->card_token,
-            $request->email,
+            $request->email
         );
 
         if ($payment->status === "approved") {
@@ -84,7 +80,7 @@ class MercadoPagoService
         //
     }
 
-    public function createPayment($value, $currency, $cardNetwork, $cardToken, $email, $installments = 1)
+    public function createPayment($value, $cardNetwork, $cardToken, $email, $installments = 1)
     {
         return $this->makeRequest(
             'POST',
@@ -95,14 +91,14 @@ class MercadoPagoService
                     'email' => $email,
                 ],
                 'binary_mode' => true,
-                'transaction_amount' => round($value * $this->resolveFactor($currency)),
+                'transaction_amount' => $value,
                 'payment_method_id' => $cardNetwork,
                 'token' => $cardToken,
                 'installments' => $installments,
                 'statement_descriptor' => config('app.name'),
             ],
             [],
-            $isJsonRequest = true,
+            $isJsonRequest = true
         );
     }
 

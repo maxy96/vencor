@@ -1,9 +1,24 @@
 require('./bootstrap');
-
+require('./sidebar');
 window.Vue = require('vue');
+//window.moment = require('moment');
 Vue.component('agregar-promocion', require('./components/agregarPromocion.vue').default);
-const app = new Vue({
-    el: '#app',
+
+//const app = new Vue({
+  //  el: '#app',
+//});
+
+function checkCookieLaw()
+{
+    if ( window.localStorage.getItem('cookieLawKeyMiWeb') )
+    {
+        $('#avisoCookies').hide();
+    }
+}
+checkCookieLaw();
+$('#aceptarCookies').on( "click", function(){
+    window.localStorage.setItem('cookieLawKeyMiWeb', true);
+    $('#avisoCookies').hide();
 });
 
 Echo.channel('promocion')
@@ -21,17 +36,6 @@ Echo.channel('promocion')
 	            });
     		});
 
-function checkCookieLaw()
-{
-	if ( window.localStorage.getItem('cookieLawKeyMiWeb') )
-	{
-		$('#avisoCookies').hide();
-	}
-}
-checkCookieLaw();
-$('#aceptarCookies').on( "click", function(){
-	window.localStorage.setItem('cookieLawKeyMiWeb', true);
-	$('#avisoCookies').hide();
-});
+
 
 

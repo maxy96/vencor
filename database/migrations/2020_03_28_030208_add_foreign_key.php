@@ -35,17 +35,11 @@ class AddForeignKey extends Migration
             //referenciando a la tabla users 
             $table->foreign('cliente_id')->references('id_user')->on('users')
                     ->onDelete('cascade')->onUpdate('cascade');
-            //referenciando a la tabla tipo_pedidos(esta en la misma migracion que esta)
-            $table->foreign('tipoPedido_id')->references('id_tipoPedido')->on('tipo_pedidos')
-                    ->onDelete('cascade')->onUpdate('cascade');
         });
 
         //TABLA DETALLES_PEDIDOS
         Schema::table('detalles_pedidos', function (Blueprint $table) {
-            //$table->bigInteger('d_orden_id')->unsigned();
             $table->foreign('orden_id')->references('id_ordenPedido')->on('orden_pedidos')->onDelete('cascade')->onUpdate('cascade');
-                    
-            //$table->bigInteger('d_producto_id')->unsigned();
             $table->foreign('producto_id')->references('id_producto')->on('productos')->onDelete('cascade')->onUpdate('cascade');
             $table->primary(array('orden_id', 'producto_id'));
         });
@@ -62,7 +56,33 @@ class AddForeignKey extends Migration
         Schema::table('personas', function (Blueprint $table) {
             $table->foreign('user_id')->references('id_user')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->primary('user_id');
-        }); 
+        });
+
+        //TABLA STOCKS
+        Schema::table('stocks', function (Blueprint $table) {
+            $table->foreign('producto_id')->references('id_producto')->on('productos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('medida_id')->references('id_medida')->on('medidas')->onDelete('cascade')->onUpdate('cascade');
+            $table->primary('producto_id');
+        });  
+
+        //TABLA SOLICITUDES
+        Schema::table('solicitudes', function (Blueprint $table) {
+            $table->foreign('proveedor_id')->references('id_proveedor')->on('proveedores')->onDelete('cascade')->onUpdate('cascade');
+        });
+
+        //DETALLES SOLICITUDES
+        Schema::table('detalles_solicitudes', function (Blueprint $table) {
+            $table->foreign('solicitud_id')->references('id_solicitud')->on('solicitudes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('producto_id')->references('id_producto')->on('productos')->onDelete('cascade')->onUpdate('cascade');
+            $table->primary(array('solicitud_id', 'producto_id'));
+        });
+
+        //TABLA PAGOS
+        Schema::table('pagos', function (Blueprint $table) {
+            $table->foreign('tipoPago_id')->references('id_tipoPago')->on('tipos_pagos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('ordenPedido_id')->references('id_ordenPedido')->on('orden_pedidos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('proveedor_id')->references('id_proveedor')->on('proveedores')->onDelete('cascade')->onUpdate('cascade');
+        });
     }
 
     /**
@@ -72,6 +92,25 @@ class AddForeignKey extends Migration
      */
     public function down()
     {
+        Schema::table('pagos', function (Blueprint $table) {
+            $table->dropForeign(['ordenPedido_id']);
+            $table->dropForeign(['proveedor_id']);
+        });
+        Schema::table('detalles_solicitudes', function (Blueprint $table) {
+            $table->dropForeign(['solicitud_id']);
+            $table->dropForeign(['producto_id']);
+        });
+        Schema::table('personas', function (Blueprint $table) {
+            $table->dropForeign(['solicitud_id']);
+            $table->dropForeign(['producto_id']);
+        });
+        Schema::table('solicitudes', function (Blueprint $table) {
+            $table->dropForeign(['proveedor_id']);
+        });
+        Schema::table('stocks', function (Blueprint $table) {
+            $table->dropForeign(['producto_id']);
+            $table->dropForeign(['medida_id']);
+        });
         Schema::table('personas', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
         });
@@ -80,11 +119,10 @@ class AddForeignKey extends Migration
             $table->dropForeign(['tipoVivienda_id']);
         });
         Schema::table('detalles_pedidos', function (Blueprint $table) {
-            $table->dropForeign(['d_producto_id']);
-            $table->dropForeign(['d_orden_id']);
+            $table->dropForeign(['producto_id']);
+            $table->dropForeign(['orden_id']);
         });
         Schema::table('orden_pedidos', function (Blueprint $table) {
-            $table->dropForeign(['tipoPedido_id']);
             $table->dropForeign(['cliente_id']);           
         });
         Schema::table('productos', function (Blueprint $table) {

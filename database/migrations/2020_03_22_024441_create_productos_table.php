@@ -21,6 +21,7 @@ class CreateProductosTable extends Migration
             $table->string('slug');
             $table->integer('stock');
             $table->decimal('precio', 8, 2);
+            $table->mediumText('descripcion');
             $table->bigInteger('tipoProducto_id')->unsigned();
             $table->integer('estadoProducto_id')->unsigned();
             $table->rememberToken();

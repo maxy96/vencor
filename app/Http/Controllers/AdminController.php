@@ -16,8 +16,8 @@ class AdminController extends Controller
 
     public function gestionarProductos()
     {
-   		$productos = Productos::orderBy('id_producto', 'DESC')->get();
-   		return view('admin.gestionarProductos', compact('productos'));
+   		
+   		return view('admin.gestionarProductos');
 
     }  
 
@@ -31,5 +31,10 @@ class AdminController extends Controller
     {
       $usuarios = User::where('perfil_id', '=', '1')->get();
       return view('admin.gestionarUsuarios');
+    }
+
+    public function pagos()
+    {
+      return view('admin.pagos');
     }
 }

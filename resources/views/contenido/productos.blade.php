@@ -4,7 +4,7 @@
 	<div class="container my-4">
 		<div class="row">
 			@foreach($productos as $producto)
-			<article class="col-md-3 my-2 mx-2 ">
+			<div class=" col-lg-3 col-md-4 my-3 ">
 				<div class="card shadow" >
 			  		<img class="card-img-top" src="{{ asset("image/$producto->p_imagen") }}" alt="Card image cap" style="height: 160px;">
 			  		<h5 class="card-header">{{$producto->nombre}}</h5>
@@ -32,7 +32,7 @@
             			@endauth
 			  		</div>
 				</div>		
-			</article>
+			</div>
 			@endforeach
 
 		</div>

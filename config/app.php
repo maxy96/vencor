@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Argentina/Buenos_Aires',
 
     /*
     |--------------------------------------------------------------------------
@@ -118,6 +118,7 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
+    'api_key' => env('API_KEY'),
 
     'key' => env('APP_KEY'),
 

@@ -21,19 +21,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+    @yield('styles')
+</script>  
 </head>
 <body>
-    @include('nav.nav')
-                 
+    <!-- Dark Overlay element -->
+    {{--<div class="overlay"></div>--}}
+    {{-- @include('nav.sidebar') --}}
+    
+    @include('nav.nav')     
     @yield('content')
     @include('layouts.notification')
     @include('layouts.whatsApp')
     @include('layouts.infoCookies')
     @include('layouts.footer')
-    @yield('script')
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+       
 
     <script src="{{ asset('js/app.js') }}" ></script> 
+     @yield('scripts')
 </body>
 </html>

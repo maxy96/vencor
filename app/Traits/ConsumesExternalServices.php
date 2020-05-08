@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Traits;
+namespace App\Traits;
 
-use Guzzlehttp\Client,
+use Guzzlehttp\Client;
 
 trait ConsumesExternalServices
 {

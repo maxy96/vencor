@@ -1,0 +1,110 @@
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -270px;
+    height: 100vh;
+    z-index: 1040;
+    background: #1a275a;
+    color: #fff;
+    transition: all 0.3s;
+  /*  overflow-y: scroll; */
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: rgba(#7386d5, 0.01);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px;
+}
+#dismiss:hover {
+    background: #fff;
+    color: #1a275a;
+}
+
+.overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1030;
+    display: none;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    border-bottom: 0.10px solid #ffffff;
+    background: #16204c;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    padding-left: 20px;
+    border-bottom: 1px solid #ffffff;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+    text-decoration: none
+}
+#sidebar ul li a:hover {
+    color: #16204c;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    //background: #16204c;
+}
+
+.list-unstyled.collapse.show{
+    padding-left: 30px;
+    background-color: #16204c;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+//a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+//    content: '\e924';
+//    display: block;
+//    position: absolute;
+//    right: 20px;
+//    font-family: 'icomoon';
+//    font-size: 1em;
+//}
+//a[aria-expanded="true"]::before {
+//    content: '\e927';
+//}
+
+
+//ul ul a {
+//    font-size: 0.9em !important;
+//    padding-left: 30px !important;
+//    background: #16204c;
+//}
+

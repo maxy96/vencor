@@ -1,5 +1,5 @@
-@if(App\Models\OrdenPedidos::where('tipoPedido_id', '=', 1)->count() >0)
-@foreach(App\Models\OrdenPedidos::where('tipoPedido_id', '=', 1)->get() as $item)
+@if(App\Models\OrdenPedidos::where('fechaEntrega', '=', null)->count() >0)
+@foreach(App\Models\OrdenPedidos::where('fechaEntrega', '=', null)->get() as $item)
         <li class="list-group-item border border-danger my-1">
             <div class="row justify-content-center">
                 <div class="col-md-3">

@@ -69,9 +69,9 @@
                             </li>
                             @if(Auth::user()->perfil_id == 1)
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link-o mx-1 dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="badge badge-pill badge-dark">
-                                        <i class="fa fa-bell"></i> {{App\Models\OrdenPedidos::where('tipoPedido_id', '=', 1)->count()}}
+                                <a id="navbarDropdown" class="nav-link-o mx-1" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="badge badge-pill badge-primary">
+                                        <i class="fa fa-bell"></i> {{App\Models\OrdenPedidos::where('fechaEntrega', '=', null)->count()}}
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 390px; padding: 0px; border-color: #9DA0A2">
@@ -83,9 +83,10 @@
                             @endif
 
                             <li class="nav-item dropdown">
-                                 <a id="navbarDropdown" class="nav-link-o mx-1 dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="color: black;">
-                                    <span class="badge badge-pill badge-dark">
-                                        <i class="fa fa-shopping-cart"></i> {{ \Cart::session(\Auth::user()->id_user)->getTotalQuantity()}}
+                                 <a id="navbarDropdown" class="nav-link-o mx-1 " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="badge badge-pill badge-primary">
+                                        <i class="fa fa-shopping-cart"></i>
+                                         {{ \Cart::session(\Auth::user()->id_user)->getTotalQuantity()}}
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 450px; padding: 0px; border-color: #9DA0A2">

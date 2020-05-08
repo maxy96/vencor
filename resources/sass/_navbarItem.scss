@@ -1,6 +1,6 @@
 .navbar-orange .navbar-nav .nav-link {
 	background-color: #ff6600;
-    border-radius: 35px;
+    border-radius: 7px;
     padding: 4px 10px 1px 13px;
     color: #f8fafc;
     font-size: 18px;
@@ -11,11 +11,11 @@
 }
 
 .navbar-orange .navbar-nav .nav-link-o {
-    color: #ff6600;
+    color: $bluelight;
     font-size: 20px;
 }
 
 .navbar-orange .navbar-nav .nav-link-o:hover {
-	color: #ff6600b8;
+	color: #00bbfe9e;
 	text-decoration: none;
 }

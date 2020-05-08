@@ -1,6 +1,9 @@
 {
-    "/js/agregarProductos.js": "/js/agregarProductos.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/css/toastr.css": "/css/toastr.css",
+    "/js/gestionarProductos.js": "/js/gestionarProductos.js",
+    "/js/gestionarProveedores.js": "/js/gestionarProveedores.js",
+    "/js/pagos.js": "/js/pagos.js",
     "/js/scroll.js": "/js/scroll.js"
 }

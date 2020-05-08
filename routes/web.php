@@ -2,19 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/','HomeController@index');
+Route::get('/','HomeController@index')->name('home');
 Route::get('/denegado', function (){
 	return view('contenido.accessDenied');
 })->name('acceso.denegado');
+
 //PRODUCTOS
 Route::get('/productos', 'ProductosController@index')->name('productos');
-Route::get('/nuevo-producto', 'ProductosController@formNuevoProducto')->name('formulario.nuevoProducto')->middleware('auth', 'admin');
-Route::post('nuevo-producto', 'ProductosController@store')->name('guardar.producto');
+//Route::get('/nuevo-producto', 'ProductosController@formNuevoProducto')->name('formulario.nuevoProducto')->middleware('auth', 'admin');
+//Route::post('nuevo-producto', 'ProductosController@store')->name('guardar.producto');
 
 //ADMIN
 Route::get('/admin/gestionar-usuarios', 'AdminController@gestionarUsuarios')->name('gestionar.usuarios');
 Route::get('/admin/gestionar-productos', 'AdminController@gestionarProductos')->name('gestionar.productos');
 Route::get('/admin/gestionar-pedidos', 'AdminController@gestionarPedidos')->name('gestionar.pedidos');
+Route::get('/admin/pagos', 'AdminController@pagos')->name('pagos');
+Route::get('/admin/gestionar-proveedores', function(){
+	return view('admin.gestionarProveedores');
+})->name('gestionar.proveedores');
 
 //VERIFY EMAIL
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
@@ -26,7 +31,7 @@ Auth::routes(['verify' => true]);
 //Route::get('/home', 'HomeController@index')->name('home');
 
 //TIPO DE PRODUCTO
-Route::post('nuevo-tipo-producto', 'TiposProductosController@store')->name('nuevo.tipo.producto');
+//Route::post('nuevo-tipo-producto', 'TiposProductosController@store')->name('nuevo.tipo.producto');
 Route::get('/producto/{slug}', 'TiposProductosController@show')->name('tipo.producto');
 
 //CONTACTO
@@ -50,9 +55,16 @@ Route::get('/orden/compra-finalizada', 'OrdenController@compraFinalizada')->name
 //PEDIDOS
 Route::get('/mis-pedidos', 'PedidosController@index')->name('mis.pedidos')->middleware('auth');
 
+//PROVEEDORES
+//Route::get('/agregar-proveedor', 'ProveedoresController@create')->name('nuevo.proveedor');
+//Route::post('/agregar-proveedor', 'ProveedoresController@store')->name('registrar.proveedor');
+
+
 Route::get('/promo', function(){
 	return view('admin.agregarPromocion');
 })->name('promo');
+
+
 //Route::get('/ad', 'MercadoPago@setupPaymentAndGetRedirectURL');
 //Route::get('/merca', 'MercadoPagoController@getCreatePreference');
 

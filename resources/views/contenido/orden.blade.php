@@ -38,7 +38,7 @@
 											<small class="text-success">Al elegir este metodo, usted pagara en efectivo al momento de recibir su pedido, y se le generará un codigo con el cual este sera identificado. </small>
 										</div>
 										<div id="mercadopagoCollapse" class="collapse" data-parent="#toggler">
-											<small>Cara</small>
+											<small>En desarrollo</small>
 										</div>
 									</div>
 								</div>

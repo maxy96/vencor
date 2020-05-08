@@ -25,7 +25,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 
         'perfil_id', 
         'estadoUsuario_id', 
-        'u_slug'
+        'u_slug',
+        'tel_verify',
+        'remember_token',
     ];
 
     /**
@@ -38,7 +40,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
         'perfil_id', 
         'estadoUsuario_id', 
-        'u_slug'
+        'u_slug',
+        'tel_verify'
     ];
 
     /**
@@ -63,5 +66,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function perfil()
     {
-        return $this->belongsTo(Perfiles::class, 'perfil_id', 'id_perfil');    }
+        return $this->belongsTo(Perfiles::class, 'perfil_id', 'id_perfil');    
     }
+}

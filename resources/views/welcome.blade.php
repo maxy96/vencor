@@ -7,12 +7,6 @@
 	    <div class="carousel-item active">
 	      <img class="w-100 img-carousel" src="{{asset('vencor1.jpg')}}" alt="First slide">
 	    </div>
-	    <div class="carousel-item">
-	      <img class="w-100 img-carousel" src="{{asset('vencor2.jpg')}}" alt="Second slide">
-	    </div>
-	    <div class="carousel-item">
-	      <img class="w-100 img-carousel" src="{{asset('vencor3.jpg')}}" alt="Third slide">
-	    </div>
 	  </div>
 	</div>
 
@@ -97,6 +91,6 @@
 	</div>
 
 @endsection
-@section('script')
+@section('scripts')
 	<script src="{{ asset('js/scroll.js') }}" defer></script>
 @endsection

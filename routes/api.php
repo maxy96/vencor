@@ -18,4 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('promocion', 'PromocionController');
+Route::apiResource('tipos-productos', 'Api\TiposProductosController');
+Route::apiResource('producto', 'Api\ProductosController');
+Route::apiResource('proveedores', 'Api\ProveedoresController');
+Route::apiResource('token', 'Api\TokensController');
+Route::apiResource('pagos', 'Api\PagosController');
+Route::apiResource('tipos-pagos', 'Api\TiposPagosController');
+
+
+
 

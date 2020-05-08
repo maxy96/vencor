@@ -5,3 +5,4 @@
 		<agregar-promocion></agregar-promocion>
 	</div>
 @endsection
+
